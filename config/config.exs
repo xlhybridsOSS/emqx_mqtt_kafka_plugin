@@ -2,6 +2,18 @@
 # and its dependencies with the aid of the Mix.Config module.
 use Mix.Config
 
+config :logger,
+    backends: [{LoggerFileBackend, :error_log}]
+config :logger, :error_log,
+    path: '/home/joshua/Documents/errorLog.log'
+
+config :logger,
+    backends: [{LoggerFileBackend, :debug_log}]
+config :logger, :debug_log,
+    path: '/home/joshua/Documents/debugLog.log',
+    level: :debug
+
+
 # This configuration is loaded before any dependency and is restricted
 # to this project. If another project depends on this project, this
 # file won't be loaded nor affect the parent project. For this reason,

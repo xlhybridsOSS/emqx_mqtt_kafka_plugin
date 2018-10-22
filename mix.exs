@@ -14,7 +14,8 @@ defmodule MqttKafka.MixProject do
   # Run "mix help compile.app" to learn about applications.
   def application do
     [
-      extra_applications: [:logger, :compiler, :elixir],
+      extra_applications: [:logger, :lager, :compiler, :elixir],
+      erl_opts: [parse_transform: "lager_transform"],
       mod: {MqttKafka.App, []}
     ]
   end

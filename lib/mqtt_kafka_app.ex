@@ -2,7 +2,13 @@ defmodule MqttKafka.App do
   use Application
 
   def start(_type, _args) do
-    MqttKafka.Supervisor.start_link(name: MqttKafka.Supervisor)
+    {:ok, sup} = MqttKafka.Supervisor.start_link(name: MqttKafka.Supervisor)
+    MqttKafka.load(:application.get_all_env())
+    {:ok, sup}
+  end
+
+  def stop(_) do
+    MqttKafka.unload()
   end
 end
 
